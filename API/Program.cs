@@ -17,12 +17,13 @@ namespace API
             var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
             var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
-            try 
+            try
             {
                 context.Database.Migrate();
                 DbInitializer.Initialize(context);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.LogError(ex, "Problem migrating data");
             }
